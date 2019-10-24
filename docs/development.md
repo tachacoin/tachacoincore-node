@@ -10,22 +10,22 @@ nvm install v4
 
 ## Fork and Download Repositories
 
-To develop qtumcore-node:
+To develop tachacoincore-node:
 
 ```bash
 cd ~
-git clone git@github.com:<yourusername>/qtumcore-node.git
-git clone git@github.com:<yourusername>/qtumcore-lib.git
+git clone git@github.com:<yourusername>/tachacoincore-node.git
+git clone git@github.com:<yourusername>/tachacoincore-lib.git
 ```
 
-To develop qtum or to compile from source:
+To develop tachacoin or to compile from source:
 
 ```bash
-git clone git@github.com:<yourusername>/qtumcoin.git
+git clone git@github.com:<yourusername>/tachacoincoin.git
 git fetch origin <branchname>:<branchname>
 git checkout <branchname>
 ```
-**Note**: See qtum documentation for building qtum on your platform.
+**Note**: See tachacoin documentation for building tachacoin on your platform.
 
 
 ## Install Development Dependencies
@@ -51,22 +51,22 @@ npm install
 cd ../bitcore-node
 npm install
 ```
-**Note**: If you get a message about not being able to download qtum distribution, you'll need to compile qtumd from source, and setup your configuration to use that version.
+**Note**: If you get a message about not being able to download tachacoin distribution, you'll need to compile tachacoind from source, and setup your configuration to use that version.
 
 
-We now will setup symlinks in `qtumcore-node` *(repeat this for any other modules you're planning on developing)*:
+We now will setup symlinks in `tachacoincore-node` *(repeat this for any other modules you're planning on developing)*:
 ```bash
 cd node_modules
-rm -rf qtumcore-lib
-ln -s ~/qtumcore-lib
-rm -rf qtumd-rpc
-ln -s ~/qtumd-rpc
+rm -rf tachacoincore-lib
+ln -s ~/tachacoincore-lib
+rm -rf tachacoind-rpc
+ln -s ~/tachacoind-rpc
 ```
 
-And if you're compiling or developing qtumcoin:
+And if you're compiling or developing tachacoincoin:
 ```bash
 cd ../bin
-ln -sf ~/qtum/src/qtumd
+ln -sf ~/tachacoin/src/tachacoind
 ```
 
 ## Run Tests
@@ -78,19 +78,19 @@ npm install mocha -g
 
 To run all test suites:
 ```bash
-cd qtumcore-node
+cd tachacoincore-node
 npm run regtest
 npm run test
 ```
 
 To run a specific unit test in watch mode:
 ```bash
-mocha -w -R spec test/services/qtumd.unit.js
+mocha -w -R spec test/services/tachacoind.unit.js
 ```
 
 To run a specific regtest:
 ```bash
-mocha -R spec regtest/qtumd.js
+mocha -R spec regtest/tachacoind.js
 ```
 
 ## Running a Development Node
@@ -102,46 +102,46 @@ cd ~
 mkdir devnode
 cd devnode
 mkdir node_modules
-touch qtumcore-node.json
+touch tachacoincore-node.json
 touch package.json
 ```
 
-Edit `qtumcore-node.json` with something similar to:
+Edit `tachacoincore-node.json` with something similar to:
 ```json
 {
   "network": "livenet",
   "port": 3001,
   "services": [
-    "qtumd",
+    "tachacoind",
     "web",
     "insight-api",
     "insight-ui",
     "<additional_service>"
   ],
   "servicesConfig": {
-    "qtumd": {
+    "tachacoind": {
       "spawn": {
-        "datadir": "/home/<youruser>/.qtum",
-        "exec": "/home/<youruser>/qtum/src/qtumd"
+        "datadir": "/home/<youruser>/.tachacoin",
+        "exec": "/home/<youruser>/tachacoin/src/tachacoind"
       }
     }
   }
 }
 ```
 
-**Note**: To install services [qtum-insight-api](https://github.com/qtumproject/insight-api) and [qtum-explorer](https://github.com/qtumproject/qtum-explorer) you'll need to clone the repositories locally.
+**Note**: To install services [tachacoin-insight-api](https://github.com/tachacoin/insight-api) and [tachacoin-explorer](https://github.com/tachacoin/tachacoin-explorer) you'll need to clone the repositories locally.
 
 Setup symlinks for all of the services and dependencies:
 
 ```bash
 cd node_modules
-ln -s ~/qtumcore-lib
-ln -s ~/qtumcore-node
-ln -s ~/qtum-insight-api
-ln -s ~/qtum-explorer
+ln -s ~/tachacoincore-lib
+ln -s ~/tachacoincore-node
+ln -s ~/tachacoin-insight-api
+ln -s ~/tachacoin-explorer
 ```
 
-Make sure that the `<datadir>/qtum.conf` has the necessary settings, for example:
+Make sure that the `<datadir>/tachacoin.conf` has the necessary settings, for example:
 ```
 server=1
 whitelist=127.0.0.1
@@ -163,5 +163,5 @@ logevents=1
 
 From within the `devnode` directory with the configuration file, start the node:
 ```bash
-../qtumcore-node/bin/qtumcore-node start
+../tachacoincore-node/bin/tachacoincore-node start
 ```

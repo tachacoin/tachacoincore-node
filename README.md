@@ -1,7 +1,7 @@
-Qtumcore Node
+Tachacoincore Node
 ============
 
-A QTUM full node for building applications and services with Node.js. A node is extensible and can be configured to run additional services.
+A TACHACOIN full node for building applications and services with Node.js. A node is extensible and can be configured to run additional services.
 
 ## Getting Started
 
@@ -13,43 +13,43 @@ A QTUM full node for building applications and services with Node.js. A node is 
     ```  
 2. Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/  
 
-3. Install qtum-bitcore https://github.com/qtumproject/qtum-bitcore - with ZMQ ! 
+3. Install tachacoin-bitcore https://github.com/tachacoin/tachacoin-bitcore - with ZMQ ! 
 
     ```bash
     # with ZMQ
     sudo apt-get install libzmq3-dev 
     ```  
-4. Install qtumcore-node  
+4. Install tachacoincore-node  
 
     ```bash
-    npm i https://github.com/qtumproject/qtumcore-node.git#master
+    npm i https://github.com/tachacoin/tachacoincore-node.git#master
 
-    $(npm bin)/qtumcore-node create mynode
+    $(npm bin)/tachacoincore-node create mynode
 
     cd mynode
 
     ```  
-5. Edit qtumcore-node.json  
+5. Edit tachacoincore-node.json  
 
     ```json
     {
       "network": "livenet",
       "port": 3001,
       "services": [
-	    "qtumd",
+	    "tachacoind",
         "web"
       ],
       "servicesConfig": {
-        "qtumd": {
+        "tachacoind": {
           "spawn": {
-            "datadir": "/home/user/.qtum",
-            "exec": "/home/user/qtum-bitcore/src/qtumd"
+            "datadir": "/home/user/.tachacoin",
+            "exec": "/home/user/tachacoin-bitcore/src/tachacoind"
           }
         }
       }
 	}
     ```  
-6. Edit qtum.conf  
+6. Edit tachacoin.conf  
 
     ```
     server=1
@@ -72,15 +72,15 @@ A QTUM full node for building applications and services with Node.js. A node is 
 7. Run Node  
 
     ```
-    $(npm bin)/qtumcore-node start
+    $(npm bin)/tachacoincore-node start
     ```  
 
 ## Add-on Services
 
-There are several add-on services available to extend the functionality of Qtumcore:
+There are several add-on services available to extend the functionality of Tachacoincore:
 
-- [QTUM Insight API](https://github.com/qtumproject/insight-api)
-- [QTUM Explorer](https://github.com/qtumproject/qtum-explorer)
+- [TACHACOIN Insight API](https://github.com/tachacoin/insight-api)
+- [TACHACOIN Explorer](https://github.com/tachacoin/tachacoin-explorer)
 
 ## Contributing
 
